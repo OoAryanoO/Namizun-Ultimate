@@ -9,35 +9,39 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/OoAryanoO/Namizun-2/graphs/commit-activity)
 [![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)](LICENSE)
 
-
+![Interface](https://raw.githubusercontent.com/OoAryanoO/Namizun-Ultimate/refs/heads/main/Namizun.png)
 </div>
 
 ---
 
 ## English Description
 
-**Namizun 2** is a stealthy, lightweight, and powerful script designed to make your server's traffic look completely natural. It monitors your real download usage and automatically generates fake upload traffic to match it (e.g., 1:1 or 1:10 or 1:15 ratio), preventing detection by data centers or firewalls due to asymmetric traffic.
+**Namizun 2** is a stealthy, lightweight, and powerful script designed to make your server's traffic look completely natural. It monitors your real download usage and automatically generates fake upload traffic to match it (e.g., 1:1 or 1:15 ratio), preventing detection by data centers or firewalls due to asymmetric traffic.
 
 ### ✨ Key Features
-* **⚖️ Smart Balance Mode:** Automatically adjusts fake upload based on real-time download usage.
-* **🛡️ Stealth & Obfuscation:** injects fake HTTP/HTTPS headers to make traffic look like legitimate web activity.
-* **📉 Traffic Jitter:** Simulates human behavior by varying packet sending speed (prevents flat-line patterns).
-* **🌐 Fake Web Server:** Runs a lightweight "Cloud Node" status page on port 80/8080 to satisfy IP probes.
-* **🖥️ Beautiful UI:** A modern, flicker-free ASCII dashboard to monitor and control everything.
-* **🚀 Background Service:** Runs automatically using `systemd` (survives reboots).
+* ** Smart Balance Mode:** Automatically adjusts upload based on real-time download usage.
+* ** UDP/TCP:** Can Change Connection UDP/TCP Protocol Manualy.
+* ** Stealth & Obfuscation:** injects HTTP/HTTPS headers to make traffic look like legitimate web activity.
+* ** Traffic Jitter:** Simulates human behavior by varying packet sending speed (prevents flat-line patterns).
+* ** Fake Web Server:** Runs a lightweight "Cloud Node" status page on port 80/8080 to satisfy IP probes.
+* ** Beautiful UI:** A modern, flicker-free ASCII dashboard to monitor and control everything.
+* ** Background Service:** Runs automatically using `systemd` (survives reboots).
 
-### 📥 Quick Installation
+###  Quick Installation
 Run the following command on your Linux server. **Ubuntu 22+** :
 
 ```bash
-bash <(curl -sL [https://raw.githubusercontent.com/OoAryanoO/Namizun-Ultimate/main/install.sh](https://raw.githubusercontent.com/OoAryanoO/Namizun-Ultimate/main/install.sh) | tr -d '\r')
+bash <(curl -sL https://raw.githubusercontent.com/OoAryanoO/Namizun-Ultimate/main/install.sh | tr -d '\r')
 ```
 
 ### ⚙️ Usage
-After installation, type the following command to open the menu:
+After installation, type the following command to open the menu :
 
 ```bash
 namizun
 ```
-### ❤ Give Me a Coffee
+### ⚠ (After Run Namizun Enable Option 5 in Menu (Install Service) For Auto-Start After Every Reboot.
+---
+
+## ❤ Give Me a Coffee
 <a href="https://www.coffeebede.com/darkmine"><img class="img-fluid" src="https://coffeebede.ir/DashboardTemplateV2/app-assets/images/banner/default-yellow.svg" /></a>

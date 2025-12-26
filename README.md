@@ -9,7 +9,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/OoAryanoO/Namizun-2/graphs/commit-activity)
 [![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)](LICENSE)
 
-![Interface](https://raw.githubusercontent.com/OoAryanoO/Namizun-Ultimate/refs/heads/main/Namizun.png)
+![Interface](https://raw.githubusercontent.com/OoAryanoO/Namizun-Ultimate/refs/heads/main/Terminal.png)
 </div>
 
 ---

@@ -40,7 +40,7 @@ After installation, type the following command to open the menu :
 ```bash
 namizun
 ```
-### ⚠ (After Run Namizun Enable Option 5 in Menu (Install Service) For Auto-Start After Every Reboot.
+### ⚠ (After Run "Namizun" Enable Option 7 in Menu (Install Service) For Auto-Start After Every Reboot.
 ---
 
 ## ❤ Give Me a Coffee

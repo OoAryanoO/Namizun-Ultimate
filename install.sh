@@ -34,7 +34,7 @@ echo -e "${GREEN}[+] Installing Python libraries (psutil)...${NC}"
 pip3 install psutil > /dev/null 2>&1
 
 echo -e "${GREEN}[+] Downloading Namizun core script...${NC}"
-rm -f "$INSTALL_DIR/$SCRIPT_NAME" # حذف نسخه قدیمی اگر هست
+rm -f "$INSTALL_DIR/$SCRIPT_NAME"
 wget -q -O "$INSTALL_DIR/$SCRIPT_NAME" "$GITHUB_RAW_URL"
 
 if [ $? -ne 0 ]; then
@@ -72,5 +72,6 @@ echo -e "${BLUE}=========================================${NC}"
 echo -e "Type \033[1;33mnamizun\033[0m to open the menu."
 echo -e "The background service is already running."
 echo ""
+
 
 

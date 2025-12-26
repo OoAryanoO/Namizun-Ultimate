@@ -328,7 +328,7 @@ def menu(old_settings):
             "9. Exit"
         ]
         
-        print(draw_box(f"NAMIZUN 3 ULTIMATE - {iface}", content))
+        print(draw_box(f"NAMIZUN  ULTIMATE - {iface}", content))
         print(f"\nCommand > {user_input}", end="\033[K", flush=True)
 
         i, _, _ = select.select([sys.stdin], [], [], 0.5)
@@ -404,3 +404,4 @@ if __name__ == "__main__":
         finally:
             termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
             os.system('clear')
+

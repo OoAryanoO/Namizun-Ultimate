@@ -33,7 +33,7 @@ FAKE_SITE_HTML = """
     body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: var(--dark); color: var(--light); overflow-x: hidden; }
     a { text-decoration: none; color: var(--light); }
     /* Header */
-    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 4%; position: fixed; width: 100%; z-index: 100; background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); transition: background 0.3s; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: px 4%; position: fixed; width: 100%; z-index: 100; background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); transition: background 0.3s; }
     .logo { font-size: 2rem; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
     nav ul { display: flex; list-style: none; }
     nav ul li { margin-left: 20px; }
@@ -112,7 +112,7 @@ FAKE_SITE_HTML = """
     </section>
 
     <footer>
-        <p>© 2024 StreamHub Inc. All rights reserved. <br> This is a demonstration site for network testing purposes.</p>
+        <p>© 24 StreamHub Inc. All rights reserved. <br> This is a demonstration site for network testing purposes.</p>
     </footer>
 </body>
 </html>
@@ -131,12 +131,12 @@ default_config = {
     "status": "stopped",
     "protocol": "TCP",
     "ratio_min": 1.0,
-    "ratio_max": 1.2,
+    "ratio_max": 10,
     "interface": get_best_interface(),
     "total_real_sent": 0,
     "total_fake_sent": 0,
     "active_target": "None",
-    "targets": ["1.1.1.1", "8.8.8.8", "filimo.com", "arvancloud.ir", "snapp.ir"],
+    "targets": ["filimo.com", "arvancloud.ir", "snapp.ir", "namava.ir"],
     "web_server": False,
     "web_port": 8080,
     "jitter": True, 
@@ -404,4 +404,5 @@ if __name__ == "__main__":
         finally:
             termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
             os.system('clear')
+
 

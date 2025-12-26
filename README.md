@@ -15,7 +15,6 @@
 </p>
 
 ![Terminal Interface](https://via.placeholder.com/800x400.png?text=Please+Upload+Your+Screenshot+Here)
-*(Please replace the image link above with your actual screenshot)*
 
 </div>
 

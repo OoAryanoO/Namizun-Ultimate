@@ -9,20 +9,14 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/OoAryanoO/Namizun-2/graphs/commit-activity)
 [![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)](LICENSE)
 
-<p align="center">
-  <a href="#english">English</a> •
-</p>
-
-![Terminal Interface](https://via.placeholder.com/800x400.png?text=Please+Upload+Your+Screenshot+Here)
 
 </div>
 
 ---
 
-<a name="english"></a>
 ## English Description
 
-**Namizun 2** is a stealthy, lightweight, and powerful script designed to make your server's traffic look completely natural. It monitors your real download usage and automatically generates fake upload traffic to match it (e.g., 1:1 ratio), preventing detection by data centers or firewalls due to asymmetric traffic.
+**Namizun 2** is a stealthy, lightweight, and powerful script designed to make your server's traffic look completely natural. It monitors your real download usage and automatically generates fake upload traffic to match it (e.g., 1:1 or 1:10 or 1:15 ratio), preventing detection by data centers or firewalls due to asymmetric traffic.
 
 ### ✨ Key Features
 * **⚖️ Smart Balance Mode:** Automatically adjusts fake upload based on real-time download usage.
@@ -33,16 +27,17 @@
 * **🚀 Background Service:** Runs automatically using `systemd` (survives reboots).
 
 ### 📥 Quick Installation
-Run the following command on your Linux server. **This command automatically fixes line-ending issues** and installs all dependencies:
+Run the following command on your Linux server. **Ubuntu 22+** :
 
 ```bash
 bash <(curl -sL [https://raw.githubusercontent.com/OoAryanoO/Namizun-Ultimate/main/install.sh](https://raw.githubusercontent.com/OoAryanoO/Namizun-Ultimate/main/install.sh) | tr -d '\r')
 ```
 
 ### ⚙️ Usage
-After installation, simply type the following command to open the menu:
+After installation, type the following command to open the menu:
 
 ```bash
 namizun
 ```
-
+### ❤ Give Me a Coffee
+<a href="https://www.coffeebede.com/darkmine"><img class="img-fluid" src="https://coffeebede.ir/DashboardTemplateV2/app-assets/images/banner/default-yellow.svg" /></a>

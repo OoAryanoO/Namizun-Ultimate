@@ -21,7 +21,7 @@
 ---
 
 <a name="english"></a>
-## 🇬🇧 English Description
+## English Description
 
 **Namizun 2** is a stealthy, lightweight, and powerful script designed to make your server's traffic look completely natural. It monitors your real download usage and automatically generates fake upload traffic to match it (e.g., 1:1 ratio), preventing detection by data centers or firewalls due to asymmetric traffic.
 
@@ -51,10 +51,11 @@ namizun
 
 <div dir="rtl" align="right">
 
-🇮🇷 توضیحات فارسی
-نامیزون ۲ (Namizun 2).
+## توضیحات
+**نامیزون 2**  یک ابزار حرفه‌ای برای "طبیعی‌سازی" ترافیک سرور شماست. این اسکریپت با رصد لحظه‌ای میزان دانلود سرور، ترافیک آپلود و رمزنگاری شده تولید می‌کند تا حساسیت  نسبت به ترافیک نامتقارن (فقط دانلود) از بین برود.
 
-✨ قابلیت‌های کلیدی
+### ✨قابلیت‌های کلیدی
+
 ⚖️ (Smart Balance): اگر سرور دانلود کند، نامیزون به همان اندازه (یا با ضریب دلخواه) آپلود می‌کند تا ترافیک ۱ به ۱ شود.
 
 🛡️  (Obfuscation): ترافیک ارسالی دارای هدرهای واقعی HTTP است تا شبیه به بازدید سایت یا آپلود فایل به نظر برسد.

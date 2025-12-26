@@ -12,7 +12,6 @@ import termios
 import select
 from collections import deque
 
-# --- تنظیمات سیستمی ---
 CONFIG_FILE = "/etc/namizun2_conf.json"
 SERVICE_PATH = "/etc/systemd/system/namizun2.service"
 HISTORY_LEN = 50
@@ -30,7 +29,7 @@ def get_best_interface():
 default_config = {
     "status": "stopped",
     "protocol": "TCP",
-    "ratio_min": 1,  # ضریب ۱ یعنی آپلود دقیقاً اندازه دانلود باشد
+    "ratio_min": 1,
     "ratio_max": 1,
     "interface": get_best_interface(),
     "total_real_sent": 0,
@@ -51,7 +50,6 @@ def save_config(config):
         with open(CONFIG_FILE, 'w') as f: json.dump(config, f)
     except: pass
 
-# --- موتور آپلود هوشمند (Smart Core) ---
 def perform_upload(amount, protocol, host):
     try:
         port = random.choice([80, 443])
@@ -73,7 +71,6 @@ def fake_uploader():
         iface = config.get("interface", "eth0")
         try:
             io_before = psutil.net_io_counters(pernic=True).get(iface)
-            # فقط دانلود را معیار قرار میدهیم
             recv_before = io_before.bytes_recv
             sent_before = io_before.bytes_sent
             
@@ -87,15 +84,10 @@ def fake_uploader():
             real_upload_speed = sent_after - sent_before
         except: time.sleep(1); continue
 
-        # اگر دانلود قابل توجهی داشتیم
         if real_download_speed > 1024 * 10: 
-            # هدف: رساندن آپلود به اندازه دانلود (ضربدر ضریب)
-            # اگر ضریب ۱ باشد، یعنی آپلود = دانلود
             target_ratio = random.uniform(config["ratio_min"], config["ratio_max"])
             target_upload = real_download_speed * target_ratio
             
-            # چقدر باید فیک تولید کنیم؟ (هدف - آپلود واقعی فعلی)
-            # اگر آپلود واقعی خودش زیاد باشد، فیک نمیفرستیم تا تابلو نشود
             needed_fake = target_upload - real_upload_speed
             
             if needed_fake > 0:
@@ -104,7 +96,6 @@ def fake_uploader():
                 config["total_fake_sent"] += needed_fake
                 save_config(config)
                 
-                # تقسیم بار بین تردها
                 chunk_size = int(needed_fake / 10) + 1
                 threads = []
                 for _ in range(10):
@@ -115,7 +106,6 @@ def fake_uploader():
                 config["active_target"] = "Waiting (Balanced)"
                 save_config(config)
 
-# --- رابط کاربری گرافیکی (UI) ---
 def get_size(bytes, suffix="B"):
     factor = 1024
     for unit in ["", "K", "M", "G", "T"]:
@@ -125,15 +115,12 @@ def get_size(bytes, suffix="B"):
     return f"{bytes:.2f}P{suffix}"
 
 def draw_box(title, lines, width=60):
-    # کادربندی زیبا
     box = f"\033[1;34m╔{'═' * (width-2)}╗\033[0m\n"
     box += f"\033[1;34m║\033[0m {title:^{width-4}} \033[1;34m║\033[0m\n"
     box += f"\033[1;34m╠{'═' * (width-2)}╣\033[0m\n"
     for line in lines:
-        # حذف کدهای رنگی برای محاسبه طول دقیق متن
         clean_line = line.replace('\033[32m', '').replace('\033[31m', '').replace('\033[1;33m', '').replace('\033[0m', '')
         padding = width - 4 - len(clean_line)
-        # اگر طول منفی شد (به خاطر کاراکترهای خاص)، پدینگ را صفر کن
         padding = max(0, padding)
         box += f"\033[1;34m║\033[0m {line}{' ' * padding} \033[1;34m║\033[0m\n"
     box += f"\033[1;34m╚{'═' * (width-2)}╝\033[0m"
@@ -173,12 +160,10 @@ def menu(old_settings):
             io1 = psutil.net_io_counters(pernic=True).get(iface)
             time.sleep(0.2)
             io2 = psutil.net_io_counters(pernic=True).get(iface)
-            # محاسبه سرعت کلی
             speed = (io2.bytes_sent + io2.bytes_recv) - (io1.bytes_sent + io1.bytes_recv)
             history.append(speed * 5)
         except: pass
 
-        # آماده سازی محتوا
         status_color = "\033[32mRUNNING" if config['status'] == 'running' else "\033[31mSTOPPED"
         status_line = f"Status: {status_color}\033[0m   Protocol: \033[1;33m{config['protocol']}\033[0m"
         
@@ -222,7 +207,6 @@ def menu(old_settings):
                     config['protocol'] = 'UDP' if config['protocol'] == 'TCP' else 'TCP'
                     save_config(config)
                 elif choice == '3':
-                    # --- FIX: برگشت به حالت عادی برای گرفتن ورودی ---
                     restore_terminal(old_settings)
                     os.system('clear')
                     print(draw_box("SETTINGS", ["Enter Traffic Ratio", "1 = Equal Upload/Download", "0.5 = Half Upload", "2 = Double Upload"]))
@@ -230,10 +214,10 @@ def menu(old_settings):
                         print("\n(Current Ratio: " + str(config['ratio_min']) + ")")
                         new_r = float(input("Enter new ratio: "))
                         config['ratio_min'] = new_r
-                        config['ratio_max'] = new_r # برای ثبات روی یک عدد تنظیم میکنیم
+                        config['ratio_max'] = new_r
                         save_config(config)
                     except: pass
-                    set_raw_mode() # برگشت به حالت Raw
+                    set_raw_mode()
                     os.system('clear')
                 elif choice == '4':
                     restore_terminal(old_settings)
@@ -270,7 +254,6 @@ def install_service():
     content = f"[Unit]\nDescription=Namizun2\nAfter=network.target\n\n[Service]\nType=simple\nExecStart=/usr/bin/python3 {script_path} run\nRestart=always\n\n[Install]\nWantedBy=multi-user.target"
     with open(SERVICE_PATH, 'w') as f: f.write(content)
     os.system("systemctl daemon-reload && systemctl enable namizun2 && systemctl restart namizun2")
-    # موقتا ترمینال را ریست میکنیم تا پیام را نشان دهیم
     print("\n\033[32m✓ Service Updated Successfully.\033[0m"); time.sleep(1.5)
 
 def uninstall():
@@ -293,4 +276,5 @@ if __name__ == "__main__":
             pass
         finally:
             termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
+
             os.system('clear')
